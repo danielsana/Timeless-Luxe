@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload product</title>
+
+    <!--  CSS Supporting FIles  -->
+    <link href="../static/files/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/files/css/lightslider.css" />
+    <link rel="stylesheet" href="../static/files/css/style.css" />
+    <!--  JS  Supporting FIles    -->
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/files/js/jquery.js"></script>
+    <script src="../static/files/js/lightslider.js"></script>
+    <script src="../static/files/js/script.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- navbar start -->
+      {% include 'navbar.html'%}
+      <!-- navbar end  -->
+
+      <!-- upload form  -->
+      <section class="row">
+        <div class="col-md-6 ms-5">
+          <div class="card shadow p-2">
+            <h5 class="text-center text-success m-3">{{message}}</h5>
+
+            <!-- form  -->
+            <form action="/upload" method="post" enctype="multipart/form-data">
+              <!-- Ectype - Allow Upload of a non text data like images, audio -->
+              <label> Product Name </label>
+              <input
+                type="text"
+                name="product_name"
+                class="form-control"
+                required
+              />
+
+              <label> Product Description </label>
+              <textarea
+                name="product_desc"
+                cols="30"
+                rows="3"
+                class="form-control"
+                required
+              ></textarea>
+
+              <label> Product Cost </label>
+              <input
+                type="number"
+                name="product_cost"
+                id="cost"
+                class="form-control"
+                required
+              />
+              <label> Product Category </label>
+              <select name="product_category" class="form-control">
+                <option value="Luxury Watches">Luxury Watches</option>
+                <option value="Casual Watches">Casual Watches</option>
+                <option value="Sports Watches">Sports Watches</option>
+                <option value="Classic Watches">Classic Watches</option>
+                <option value="Minimalist Watches">
+                  Minimalist Watches
+                </option></select
+              ><br />
+
+              <label> Product Image </label>
+              <input
+                type="file"
+                name="product_image_name"
+                class="form-control"
+                required
+              /><br />
+
+              <input
+                type="submit"
+                value="Add/Upload Product"
+                class="btn btn-success"
+                required
+              /><br />
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

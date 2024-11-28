@@ -9,13 +9,25 @@ def home():
      # connect to db 
     connection = pymysql.connect(host="localhost", user='root', password='', database='project-oct')
 
-    # fetch electronics 
+    # fetch luxury watches 
     sql1 = 'select * from products where product_category = "Luxury Watches"'
     cursor = connection.cursor()
     cursor.execute(sql1)
     luxury = cursor.fetchall()
 
-    return render_template('home.html', luxury=luxury)
+    # fetch  casual watches
+    sql1 = 'select * from products where product_category = "Casual Watches"'
+    cursor = connection.cursor()
+    cursor.execute(sql1)
+    casual = cursor.fetchall()
+
+    # fetch  casual watches
+    sql1 = 'select * from products where product_category = "Sports Watches"'
+    cursor = connection.cursor()
+    cursor.execute(sql1)
+    sports = cursor.fetchall()
+
+    return render_template('home.html', luxury=luxury, casual=casual, sports=sports)
 
 @app.route('/upload',methods=['POST','GET'])
 def upload():
